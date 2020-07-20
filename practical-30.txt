@@ -1,0 +1,224 @@
+
+# coding: utf-8
+
+# In[7]:
+
+
+pip install mysql-connector
+
+
+# In[8]:
+
+
+import mysql.connector
+
+
+# In[18]:
+
+
+#create_database
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd=""
+)
+mycursor = mydb.cursor()
+mycursor.execute("CREATE DATABASE Dhrulo")
+
+
+#print(mydb)
+mycursor = mydb.cursor()
+
+mycursor.execute("SHOW DATABASES")
+
+for x in mycursor:
+  print(x)
+
+
+# In[20]:
+
+
+#create_table_1
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="jenio"
+)
+mycursor = mydb.cursor()
+mycursor.execute("CREATE TABLE personal (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))")
+
+
+# In[21]:
+
+
+#create_table_2
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="jenio"
+)
+mycursor = mydb.cursor()
+mycursor.execute("CREATE TABLE collage (id INT AUTO_INCREMENT PRIMARY KEY, enrollment_number VARCHAR(255), Semester VARCHAR(255))")
+
+
+# In[23]:
+
+
+#inser_value_in_table_1
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="jenio"
+)
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO personal (name, address) VALUES (%s, %s)"
+val = [
+  ('Peter', 'Lowstreet 4'),
+  ('Amy', 'Apple st 652'),
+  ('Hannah', 'Mountain 21'),
+  ('Michael', 'Valley 345'),
+  ('Sandy', 'Ocean blvd 2'),
+  ('Betty', 'Green Grass 1'),
+  ('Richard', 'Sky st 331'),
+  ('Susan', 'One way 98'),
+  ('Vicky', 'Yellow Garden 2'),
+  ('Ben', 'Park Lane 38'),
+  ('William', 'Central st 954'),
+  ('Chuck', 'Main Road 989'),
+  ('Viola', 'Sideway 1633')
+]
+
+mycursor.executemany(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "was inserted.")
+
+
+# In[24]:
+
+
+#inser_value_in_table_2
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="jenio"
+)
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO collage (enrollment_number, Semester) VALUES (%s, %s)"
+val = [
+  ('17SE02CE010', '6'),
+  ('17SE02CE011', '7'),
+  ('17SE02CE012', '5'),
+  ('17SE02CE013', '4'),
+  ('17SE02CE014', '3'),
+  ('17SE02CE015', '2'),
+  ('17SE02CE016', '1'),
+  ('17SE02CE017', '8'),
+  ('17SE02CE018', '5'),
+  ('17SE02CE019', '6'),
+  ('17SE02CE020', '4'),
+  ('17SE02CE021', '3'),
+  ('17SE02CE022', '2')
+]
+
+mycursor.executemany(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "was inserted.")
+
+
+# In[28]:
+
+
+#inner_join
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="jenio"
+)
+
+mycursor = mydb.cursor()
+
+sql = "SELECT   personal.name AS user,   collage.enrollment_number AS favorite   FROM personal   INNER JOIN collage ON personal.id = collage.id"
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+
+# In[30]:
+
+
+#Left_join
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="jenio"
+)
+
+mycursor = mydb.cursor()
+
+sql = "SELECT   personal.name AS user,   collage.Semester AS favorite   FROM personal   LEFT JOIN collage ON personal.id = collage.id"
+
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+
+# In[31]:
+
+
+#Right_join
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="jenio"
+)
+
+mycursor = mydb.cursor()
+
+sql = "SELECT   personal.address AS user,   collage.enrollment_number AS favorite   FROM personal   RIGHT JOIN collage ON personal.id = collage.id"
+
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+

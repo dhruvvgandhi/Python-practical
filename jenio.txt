@@ -1,0 +1,48 @@
+===Database jenio
+
+== Table structure for table collage
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int(11)|No|
+|enrollment_number|varchar(255)|Yes|NULL
+|Semester|varchar(255)|Yes|NULL
+== Dumping data for table collage
+
+|1|17SE02CE010|6
+|2|17SE02CE011|7
+|3|17SE02CE012|5
+|4|17SE02CE013|4
+|5|17SE02CE014|3
+|6|17SE02CE015|2
+|7|17SE02CE016|1
+|8|17SE02CE017|8
+|9|17SE02CE018|5
+|10|17SE02CE019|6
+|11|17SE02CE020|4
+|12|17SE02CE021|3
+|13|17SE02CE022|2
+== Table structure for table personal
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int(11)|No|
+|name|varchar(255)|Yes|NULL
+|address|varchar(255)|Yes|NULL
+== Dumping data for table personal
+
+|1|Peter|Lowstreet 4
+|2|Amy|Apple st 652
+|3|Hannah|Mountain 21
+|4|Michael|Valley 345
+|5|Sandy|Ocean blvd 2
+|6|Betty|Green Grass 1
+|7|Richard|Sky st 331
+|8|Susan|One way 98
+|9|Vicky|Yellow Garden 2
+|10|Ben|Park Lane 38
+|11|William|Central st 954
+|12|Chuck|Main Road 989
+|13|Viola|Sideway 1633
